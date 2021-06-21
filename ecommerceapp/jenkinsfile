@@ -13,6 +13,8 @@ pipeline{
        steps{
        
           bat "mvn -f ./ecommerceapp clean install -DskipTests"
+          bat "docker build -f ecommerceapp/dockerfile -t ecommercegapapp ./ecommerceapp"
+          bat "docker run -p 7076:7070 --name gap-c1 -d ecommercegapapp:latest"                                
                                          
        }
    
